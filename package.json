@@ -1,0 +1,34 @@
+{
+  "name"            : "async-glob-event",
+  "version"         : "0.0.0",
+  "description"     : "Event emitter with glob support on event names and asynchronous listeners",
+  "keywords"        : ["event", "emitter", "glob", "listener", "async", "return values"],
+  "author"          : "Maximilian Antoni (http://maxantoni.de)",
+  "homepage"        : "https://github.com/mantoni/async-glob-events.js",
+  "main"            : "./lib/events.js",
+  "engines"         : {
+    "node"          : ">=0.10"
+  },
+  "scripts"         : {
+    "start"         : "mocha --watch",
+    "lint"          : "jslint --color './**/*.js'",
+    "test-wd"       : "mochify --wd",
+    "test"          : "npm run lint && mocha && mochify --cover"
+  },
+  "repository"      : {
+    "type"          : "git",
+    "url"           : "https://github.com/mantoni/async-glob-events.js.git"
+  },
+  "dependencies"    : {
+    "inherits"      : "^2.0",
+    "listen"        : "^1.0",
+    "glob-events"   : "~0.4.0"
+  },
+  "devDependencies" : {
+    "mocha"         : "^1.17",
+    "jslint"        : "~0.3.3",
+    "mochify"       : "~0.9.0"
+  },
+  "files"           : ["lib", "README.md", "CHANGES.md", "LICENSE"],
+  "license"         : "MIT"
+}
