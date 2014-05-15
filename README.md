@@ -14,16 +14,6 @@ Repository: <https://github.com/mantoni/async-glob-events.js>
   errors and return values from listeners
 - 100% test coverage
 
-## Install with npm
-
-```
-npm install async-glob-events
-```
-
-## Browser support
-
-Use [Browserify](http://browserify.org) to create a standalone file.
-
 ## Usage
 
 ```js
@@ -62,6 +52,16 @@ The API is identical to [glob-events][] with these additions:
 - `emit({ event : 'name', allResults : true }, ...)` may be used to receive an
   array with all non-`undefined` return values of all listeners
 - `this.callback()` may be used in listeners to obtain a callback
+
+## Install with npm
+
+```
+npm install async-glob-events
+```
+
+## Browser support
+
+Use [Browserify](http://browserify.org) to create a standalone file.
 
 ## License
 
