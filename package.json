@@ -1,6 +1,6 @@
 {
   "name"            : "async-glob-events",
-  "version"         : "0.1.0",
+  "version"         : "0.1.1",
   "description"     : "Event emitter with glob support on event names and asynchronous listeners",
   "keywords"        : ["event", "emitter", "glob", "listener", "async", "return values"],
   "author"          : "Maximilian Antoni (http://maxantoni.de)",
