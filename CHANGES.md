@@ -1,8 +1,13 @@
 # Changes
 
+## 1.0.0
+
+- Use `glob-events` 1.0
+- Allow to configure the scope to use on listener registration
+
 ## 0.2.0
 
-- Bump glob-events to 0.5.0
+- Bump `glob-events` to 0.5
 
 ## 0.1.1
 
