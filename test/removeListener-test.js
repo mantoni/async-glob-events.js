@@ -29,6 +29,7 @@ describe('removeListener', function () {
       /*jslint unparam: true*/
       arg = fn;
     });
+    e.addListener('test', noop);
 
     e.removeListener('test', noop);
 

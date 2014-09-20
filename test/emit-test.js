@@ -169,6 +169,56 @@ describe('emit', function () {
       assert.deepEqual(calls[0], [42]);
     });
 
+  it('allows to configure scope for sync listener', function () {
+    var scope = {};
+    var self;
+    e.on({ event : 'test', scope : scope }, function () {
+      self = this;
+    });
+
+    e.emit('test');
+
+    assert.strictEqual(self, scope);
+  });
+
+  it('allows to configure scope for async listener', function () {
+    var scope = {};
+    var self;
+    e.on({ event : 'test', scope : scope }, function (callback) {
+      self = this;
+      callback();
+    });
+
+    e.emit('test');
+
+    assert.strictEqual(self, scope);
+  });
+
+  it('allows to configure scope for sync once listener', function () {
+    var scope = {};
+    var self;
+    e.once({ event : 'test', scope : scope }, function () {
+      self = this;
+    });
+
+    e.emit('test');
+
+    assert.strictEqual(self, scope);
+  });
+
+  it('allows to configure scope for async once listener', function () {
+    var scope = {};
+    var self;
+    e.once({ event : 'test', scope : scope }, function (callback) {
+      self = this;
+      callback();
+    });
+
+    e.emit('test');
+
+    assert.strictEqual(self, scope);
+  });
+
   it('yields callback error from listener', function () {
     var err = new Error();
     e.on('test', function (callback) {
