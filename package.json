@@ -11,8 +11,8 @@
   },
   "scripts"         : {
     "start"         : "mocha --watch",
-    "lint"          : "jslint --color './**/*.js'",
-    "test-wd"       : "mochify --wd",
+    "lint"          : "jslint --color \"**/*.js\"",
+    "wd"            : "mochify --wd",
     "test"          : "npm run lint && mocha && mochify --cover"
   },
   "repository"      : {
@@ -20,14 +20,14 @@
     "url"           : "https://github.com/mantoni/async-glob-events.js.git"
   },
   "dependencies"    : {
-    "inherits"      : "^2.0.1",
-    "listen"        : "^1.0.0",
-    "glob-events"   : "~0.5.0"
+    "inherits"      : "^2.0",
+    "listen"        : "^1.0",
+    "glob-events"   : "^1.0"
   },
   "devDependencies" : {
-    "mocha"         : "^1.17.0",
-    "jslint"        : "~0.3.3",
-    "mochify"       : "~0.9.0"
+    "mocha"         : "^1.21",
+    "jslint"        : "^0.6",
+    "mochify"       : "^1.1"
   },
   "files"           : ["lib", "README.md", "CHANGES.md", "LICENSE"],
   "license"         : "MIT"
