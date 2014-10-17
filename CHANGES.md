@@ -1,5 +1,9 @@
 # Changes
 
+## 1.0.1
+
+- Don't swallow errors
+
 ## 1.0.0
 
 - Use `glob-events` 1.0
