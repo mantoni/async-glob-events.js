@@ -277,6 +277,27 @@ describe('emit', function () {
     });
   });
 
+  it('emits error event if no callback but error handler', function () {
+    var err = new Error();
+    var caught;
+    e.on('test', throws(err));
+    e.on('error', function (e) {
+      caught = e;
+    });
+
+    e.emit('test');
+
+    assert.strictEqual(caught, err);
+  });
+
+  it('throws error event if no callback and no error handler', function () {
+    e.on('test', throws(new Error()));
+
+    assert.throws(function () {
+      e.emit('test');
+    }, Error);
+  });
+
   it('yields return value from listener if no callback', function () {
     e.on('test', function () {
       return 42;
