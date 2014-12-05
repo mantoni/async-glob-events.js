@@ -59,9 +59,15 @@ returned.
 
 The API is identical to [glob-events][] with these additions:
 
-- `emit({ event : 'name', allResults : true }, ...)` may be used to receive an
-  array with all non-`undefined` return values of all listeners
-- `this.callback()` may be used in listeners to obtain a callback
+- `emit(event[, ...], callback)` will invoke the given callback once all
+  listeners yielded. The callback is called with `(err, value)`.
+- `emit({ event : 'name', allResults : true }[, ...], callback)` retrieves an
+  array with all non-`undefined` return values of all listeners.
+- `invoke(iterator, scope[, callback])` is an async override of the
+  [glob-events][] implementation. The given callback is invoked once all
+  listeners yielded.
+- `this.callback()` in listeners returns a callback which has to be invoked for
+  `emit` to yield. `this.callback` is a [listen][] instance.
 
 ## License
 
@@ -71,3 +77,4 @@ MIT
 [SemVer]: http://img.shields.io/:semver-%E2%9C%93-brightgreen.svg
 [License]: http://img.shields.io/npm/l/async-glob-events.svg
 [glob-events]: https://github.com/mantoni/glob-events.js
+[listen]: https://github.com/mantoni/listen.js
