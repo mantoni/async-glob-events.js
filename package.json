@@ -10,7 +10,7 @@
     "node"          : ">=0.10"
   },
   "scripts"         : {
-    "start"         : "mocha --watch",
+    "start"         : "mochify --watch",
     "lint"          : "jslint --color \"**/*.js\"",
     "wd"            : "mochify --wd",
     "test"          : "npm run lint && mocha && mochify --cover"
@@ -25,9 +25,9 @@
     "glob-events"   : "^1.0"
   },
   "devDependencies" : {
-    "mocha"         : "^1.21",
-    "jslint"        : "^0.6",
-    "mochify"       : "^1.1"
+    "mocha"         : "^2.0",
+    "mochify"       : "^2.0",
+    "jslint"        : "^0.6"
   },
   "files"           : ["lib", "README.md", "CHANGES.md", "LICENSE"],
   "license"         : "MIT"
