@@ -1,5 +1,9 @@
 # Changes
 
+## 1.1.0
+
+- Refactor parts of `emit` into the new `invoke` override
+
 ## 1.0.1
 
 - Don't swallow errors
