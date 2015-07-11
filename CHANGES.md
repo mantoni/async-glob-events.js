@@ -1,5 +1,9 @@
 # Changes
 
+## 1.2.0
+
+- Expose `emitter` on scope
+
 ## 1.1.0
 
 - Refactor parts of `emit` into the new `invoke` override
