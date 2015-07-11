@@ -343,7 +343,7 @@ describe('emit', function () {
     });
 
     e.emit('test', function (e, val) {
-      /*jslint unparam: true*/
+      assert.ifError(e);
       assert.strictEqual(val, null);
     });
   });
@@ -357,7 +357,7 @@ describe('emit', function () {
     });
 
     e.emit('test', function (e, val) {
-      /*jslint unparam: true*/
+      assert.ifError(e);
       assert.equal(val, 2);
     });
   });
@@ -371,9 +371,23 @@ describe('emit', function () {
     });
 
     e.emit({ event : 'test', allResults : true }, function (e, val) {
-      /*jslint unparam: true*/
+      assert.ifError(e);
       assert.deepEqual(val, [1, 2]);
     });
+  });
+
+  it('uses last given as callback if fewer args than arity', function () {
+    var args;
+    e.on('test', function (a, b, cb) {
+      args = [a, b, cb];
+      cb();
+    });
+
+    e.emit('test', 42, function () { return; });
+
+    assert.strictEqual(args[0], 42);
+    assert.strictEqual(args[1], undefined);
+    assert.equal(typeof args[2], 'function');
   });
 
 });
