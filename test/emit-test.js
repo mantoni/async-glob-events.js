@@ -219,6 +219,17 @@ describe('emit', function () {
     assert.strictEqual(self, scope);
   });
 
+  it('exposes emitter on scope', function () {
+    var self;
+    e.on('test', function () {
+      self = this;
+    });
+
+    e.emit('test');
+
+    assert.strictEqual(self.emitter, e);
+  });
+
   it('yields callback error from listener', function () {
     var err = new Error();
     e.on('test', function (callback) {
