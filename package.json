@@ -10,10 +10,11 @@
     "node"          : ">=0.10"
   },
   "scripts"         : {
-    "start"         : "mochify --watch",
+    "watch"         : "mochify --watch",
     "lint"          : "jslint --edition=latest --color \"**/*.js\"",
     "wd"            : "mochify --wd",
-    "test"          : "npm run lint && mocha && mochify --cover"
+    "pretest"       : "npm run lint",
+    "test"          : "mocha && mochify --cover"
   },
   "repository"      : {
     "type"          : "git",
