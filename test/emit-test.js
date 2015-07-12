@@ -252,23 +252,21 @@ describe('emit', function () {
     });
   });
 
-  it('yields thrown error from listener if no callback', function () {
-    var err = new Error();
-    e.on('test', function () {
-      throw err;
-    });
-
-    e.emit('test', function (e) {
-      assert.strictEqual(e, err);
-    });
-  });
-
   function throws(err) {
     return function (cb) {
       /*jslint unparam: true*/
       throw err;
     };
   }
+
+  it('yields thrown error from listener if no callback', function () {
+    var err = new Error();
+    e.on('test', throws(err));
+
+    e.emit('test', function (e) {
+      assert.strictEqual(e, err);
+    });
+  });
 
   it('yields thrown error from listener if callback', function () {
     var err = new Error();
@@ -399,6 +397,99 @@ describe('emit', function () {
     assert.strictEqual(args[0], 42);
     assert.strictEqual(args[1], undefined);
     assert.equal(typeof args[2], 'function');
+  });
+
+  it('does not invoke error handler with callback', function () {
+    var f;
+    e.on('error', function (err, cb) {
+      /*jslint unparam: true*/
+      f = cb;
+    });
+    e.on('test', throws(new Error()));
+
+    e.emit('test');
+
+    assert.strictEqual(f, undefined);
+  });
+
+  it('does not invoke once error handler with callback', function () {
+    var f;
+    e.once('error', function (err, cb) {
+      /*jslint unparam: true*/
+      f = cb;
+    });
+    e.on('test', throws(new Error()));
+
+    e.emit('test');
+
+    assert.strictEqual(f, undefined);
+  });
+
+  function noop() { return; }
+  noop(); // Coverage
+
+  it('does not invoke newListener handler with callback', function () {
+    var f;
+    e.on('newListener', function (event, fn, cb) {
+      /*jslint unparam: true*/
+      f = cb;
+    });
+
+    e.addListener('test', noop);
+
+    assert.strictEqual(f, undefined);
+  });
+
+  it('does not invoke once newListener handler with callback', function () {
+    var f;
+    e.once('newListener', function (event, fn, cb) {
+      /*jslint unparam: true*/
+      f = cb;
+    });
+
+    e.addListener('test', noop);
+
+    assert.strictEqual(f, undefined);
+  });
+
+  it('does not invoke removeListener handler with callback', function () {
+    var f;
+    e.on('removeListener', function (event, fn, cb) {
+      /*jslint unparam: true*/
+      f = cb;
+    });
+
+    e.addListener('test', noop);
+    e.removeListener('test', noop);
+
+    assert.strictEqual(f, undefined);
+  });
+
+  it('does not invoke once removeListener handler with callback', function () {
+    var f;
+    e.once('removeListener', function (event, fn, cb) {
+      /*jslint unparam: true*/
+      f = cb;
+    });
+
+    e.addListener('test', noop);
+    e.removeListener('test', noop);
+
+    assert.strictEqual(f, undefined);
+  });
+
+  it('does not invoke configured internal handler with callback', function () {
+    e = new AsyncEmitter({
+      internalEvents: ['foo']
+    });
+    var f;
+    e.on('foo', function (cb) {
+      f = cb;
+    });
+
+    e.emit('foo');
+
+    assert.strictEqual(f, undefined);
   });
 
 });
