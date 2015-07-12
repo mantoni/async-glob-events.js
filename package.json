@@ -14,7 +14,7 @@
     "lint"          : "jslint --edition=latest --color \"**/*.js\"",
     "wd"            : "mochify --wd",
     "pretest"       : "npm run lint",
-    "test"          : "mocha && mochify --cover"
+    "test"          : "echo '# node:' && mocha -R dot && mochify --cover"
   },
   "repository"      : {
     "type"          : "git",
