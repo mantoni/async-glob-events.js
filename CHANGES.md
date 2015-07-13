@@ -1,5 +1,9 @@
 # Changes
 
+## 1.3.1
+
+- Use `this.invoke` for internal events instead of super implementation
+
 ## 1.3.0
 
 - Pass `opts` to super constructor
