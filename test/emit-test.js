@@ -492,4 +492,18 @@ describe('emit', function () {
     assert.strictEqual(f, undefined);
   });
 
+  it('adds `callback` to scope of internal handler', function () {
+    e = new AsyncEmitter({
+      internalEvents: ['foo']
+    });
+    var s;
+    e.on('foo', function () {
+      s = this;
+    });
+
+    e.emit('foo');
+
+    assert.equal(typeof s.callback, 'function');
+  });
+
 });
