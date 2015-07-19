@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.0
+
+- Explicitly depend on `glob-events@1.5`
+
 ## 1.3.1
 
 - Use `this.invoke` for internal events instead of super implementation
