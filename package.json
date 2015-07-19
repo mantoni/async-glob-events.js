@@ -23,7 +23,7 @@
   "dependencies"    : {
     "inherits"      : "^2.0",
     "listen"        : "^1.0",
-    "glob-events"   : "^1.4"
+    "glob-events"   : "^1.5"
   },
   "devDependencies" : {
     "mocha"         : "^2.0",
