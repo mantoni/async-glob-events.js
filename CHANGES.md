@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.0
+
+- Explicitly depend on `glob-events@1.5`
+
 ## 1.3.0
 
 - Pass `opts` to super constructor
