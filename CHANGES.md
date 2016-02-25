@@ -1,5 +1,10 @@
 # Changes
 
+## 1.5.0
+
+- Pull in `emitError` from `glob-events@1.6`
+- Use `emitError` when an exception is caught
+
 ## 1.4.0
 
 - Explicitly depend on `glob-events@1.5`
