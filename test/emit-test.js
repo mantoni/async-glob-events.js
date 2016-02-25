@@ -425,6 +425,21 @@ describe('emit', function () {
     assert.strictEqual(f, undefined);
   });
 
+  it("invokes error listener with cause on scope", function () {
+    var s;
+    e.on('error', function (err) {
+      /*jslint unparam: true*/
+      s = this;
+    });
+    e.on('test', throws(new Error()));
+
+    e.emit('test', 42, true, { a: 'bc' });
+
+    assert.equal(s.cause.event, 'test');
+    assert.deepEqual(s.cause.args, [42, true, { a: 'bc' }]);
+    assert.strictEqual(s.emitter, e);
+  });
+
   function noop() { return; }
   noop(); // Coverage
 
